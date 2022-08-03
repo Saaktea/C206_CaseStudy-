@@ -1,12 +1,18 @@
+import java.util.ArrayList;
 
 public class C206_CaseStudy {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-
+		
+		ArrayList<subjectGroup> subjectGroupList = new ArrayList<subjectGroup>();
+		ArrayList<student> studentList = new ArrayList<student>();
+		ArrayList<TuitionInfo> tutionInfoList = new ArrayList<TuitionInfo>();
+		
+		
 		while (option != 5) {
 
-			ResourceCentre.menu();
+			adminMenu();
 			option = Helper.readInt("Enter an option > ");
 
 			if (option == 1) {
