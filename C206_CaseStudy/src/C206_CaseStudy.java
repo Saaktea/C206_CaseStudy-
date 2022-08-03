@@ -100,7 +100,7 @@ public class C206_CaseStudy {
 				} else if (optionNum == 2) {
 					C206_CaseStudy.viewAllSubjectGroup(subjectGroupList);
 				} else if (optionNum == 3) {
-					C206_CaseStudy.deleteTimetable(subjectGroupList);
+					C206_CaseStudy.deleteSubjectGroup(subjectGroupList);
 				} else {
 					System.out.println("Invalid Option Number");
 				}
@@ -254,7 +254,7 @@ public class C206_CaseStudy {
 
 	// ================================= SAKTHI =================================//
 
-	public static void deleteStudentGroup(ArrayList<subjectGroup> subjectGroupList) {
+	public static void deleteSubjectGroup(ArrayList<subjectGroup> subjectGroupList) {
 		C206_CaseStudy.viewAllSubjectGroup(subjectGroupList);
 		String search = Helper.readString("Enter Subject Name: ");
 		Boolean isDeleted = doDeleteSubjectGroup(subjectGroupList, search);
