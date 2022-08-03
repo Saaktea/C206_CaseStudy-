@@ -8,6 +8,9 @@ public class C206_CaseStudy {
 		ArrayList<subjectGroup> subjectGroupList = new ArrayList<subjectGroup>();
 		ArrayList<student> studentList = new ArrayList<student>();
 		ArrayList<TuitionInfo> tutionInfoList = new ArrayList<TuitionInfo>();
+		ArrayList<Timetable> ttList = new ArrayList<Timetable>();
+		
+		ttList.add(new Timetable(001, 80.0, "01/02/2020", "01/10/2020", "Face to Face"));
 		
 		int option =0;
 		
@@ -23,32 +26,55 @@ public class C206_CaseStudy {
 
 			} else if (option == 2) {
 				// Add a new item
-				ResourceCentre.setHeader("ADD");			
-				ResourceCentre.setHeader("ITEM TYPES");
-				System.out.println("1. Camcorder");
-				System.out.println("2. Chromebook");
+				C206_CaseStudy.setHeader("Maintain Tuition Details");			
 				
-				int itemType = Helper.readInt("Enter option to select item type > ");
+				int Type = Helper.readInt("Enter option to select > ");
 
-				if (itemType == 1) {
-					// Add a camcorder
-					Camcorder cc = inputCamcorder();
-					ResourceCentre.addCamcorder(camcorderList, cc);
-					System.out.println("Camcorder added");
+				if (Type == 1) {
+					// Maintain tuition timetable details
+					C206_CaseStudy.setHeader("Maintain Tuition Timetable Information");
+					System.out.println("1. View Tuition Timetable");
+					System.out.println("2. Add Tuition Timetable");
+					System.out.println("3. Delete Tuition Timetable");
+					
+					int optionNum = Helper.readInt("Enter option to select > ");
+					
+					if (optionNum == 1) {
+						
+					} else if (optionNum == 2) {
+						
+					} else if (optionNum == 3) {
+						
+					} else {
+						System.out.println("Invalid Option Number");
+					}
 
-				} else if (itemType == 2) {
-					// Add a Chromebook
-					Chromebook cb = inputChromebook();
-					ResourceCentre.addChromebook(chromebookList, cb);
-					System.out.println("Chromebook added");
+				} else if (Type == 2) {
+					// Maintain tuition details
+					C206_CaseStudy.setHeader("Maintain Tuition Information");
+					System.out.println("1. View Tuition");
+					System.out.println("2. Add Tuition");
+					System.out.println("3. Delete Tuition");
+					
+					int optionNum = Helper.readInt("Enter option to select > ");
+					
+					if (optionNum == 1) {
+						
+					} else if (optionNum == 2) {
+						
+					} else if (optionNum == 3) {
+						
+					} else {
+						System.out.println("Invalid Option Number");
+					}
 
 				} else {
-					System.out.println("Invalid type");
+					System.out.println("Invalid number");
 				}
 
 			} else if (option == 3) {
 				// Loan item
-				ResourceCentre.setHeader("LOAN");			
+				C206_CaseStudy.setHeader("LOAN");			
 				ResourceCentre.setHeader("ITEM TYPES");
 				System.out.println("1. Camcorder");
 				System.out.println("2. Chromebook");
@@ -108,5 +134,6 @@ public class C206_CaseStudy {
 		System.out.println(header);
 		Helper.line(80, "-");
 	}
-
+	
+	
 }
