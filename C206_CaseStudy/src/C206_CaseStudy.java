@@ -9,8 +9,6 @@ public class C206_CaseStudy {
 		ArrayList<student> studentList = new ArrayList<student>();
 		ArrayList<TuitionInfo> tutionInfoList = new ArrayList<TuitionInfo>();
 		
-		
-		
 		int option =0;
 		
 		while (option != 5) {
@@ -93,13 +91,10 @@ public class C206_CaseStudy {
 
 		}
 		
-		
-		
 	}
 	
-	
 	public static void adminMenu() {
-		C206_CaseStudy.setHeader("RESOURCE CENTRE APP");
+		C206_CaseStudy.setHeader("TUITION MANAGEMENT SYSTEM");
 		System.out.println("1. Register student account");				//NEED TO DO 
 		System.out.println("2. Maintain tuition information");
 		System.out.println("3. Maintain Subject group information");
@@ -108,13 +103,10 @@ public class C206_CaseStudy {
 		Helper.line(80, "-");
 	}
 
-
-	private static void setHeader(String string) {
-		// TODO Auto-generated method stub
-		
-	}
-	
-	
+	private static void setHeader(String header) {
+		Helper.line(80, "-");
+		System.out.println(header);
+		Helper.line(80, "-");
 	}
 
 }
