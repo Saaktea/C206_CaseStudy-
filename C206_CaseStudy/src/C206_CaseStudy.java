@@ -105,24 +105,32 @@ public class C206_CaseStudy {
 					System.out.println("Invalid Option Number");
 				}
 
-			} else if (option == 4) {
+			} 
+			//=================================NAEEM1S=================================//
+			else if (option == 4) {
 				registrationMenu();
-				// Return item
-				// ResourceCentre.setHeader("RETURN");
-				// ResourceCentre.setHeader("ITEM TYPES");
 
 				int itemType = Helper.readInt("Enter option for registration > ");
-				if (itemType == 1) { // NAEEM
+				if (itemType == 1) {																			//NAEEM
 					Registration register = registerStudent(registrationList);
 					C206_CaseStudy.addRegister(registrationList, register);
-					System.out.println("Chromebook added");
+					System.out.println("Registration added");
 				} else if (itemType == 2) {
-
-				} else {
-					System.out.println("Invalid type");
+					C206_CaseStudy.viewAllRegistration(registrationList);
+				} 
+				else if(itemType == 3){
+					C206_CaseStudy.deleteRegistration(registrationList);
 				}
+				else {
+					System.out.println("Invalid input");
+				}
+				
 
-			} else if (option == 5) {
+			} 
+			//=================================NAEEM1E=================================//
+			
+			
+			else if (option == 5) {
 				System.out.println("Bye!");
 			} else {
 				System.out.println("Invalid option");
@@ -280,31 +288,78 @@ public class C206_CaseStudy {
 		return isDeleted;
 	}
 
-	// =================================NAEEM=================================//
-	public static Registration registerStudent(ArrayList<Registration> registrationList) {
+	//=================================NAEEM2S=================================//
+	
+		//REGISTER
+		public static Registration registerStudent(ArrayList<Registration> registrationList) {
+			
+			int id = registrationList.get(registrationList.size()-1).getRegistrationNumber();
+			id += 1;
+			
+			
+			int timetableID = Helper.readInt("Enter tuition timetable ID: ");
+			String studentEmail = Helper.readString("Enter student email: ");
+			LocalDate registerDate = LocalDate.now();  
+			
+			Registration register = new Registration(id, timetableID, studentEmail, registerDate);
+			
+			return register;
+		}
+		
+		public static void addRegister(ArrayList<Registration> registrationList, Registration register) {
 
-		int id = registrationList.get(registrationList.size() - 1).getRegistrationNumber();
-		id += 1;
+			registrationList.add(register);	
 
-		int timetableID = Helper.readInt("Enter tuition timetable ID: ");
-		String studentEmail = Helper.readString("Enter student email: ");
-		LocalDate registerDate = LocalDate.now();
+		}
+		//VIEW
+		
+		public static String viewAllRegister(ArrayList<Registration> registrationList) {
+			String output = "";
 
-		Registration register = new Registration(id, timetableID, studentEmail, registerDate);
+			for (Registration reg : registrationList) {
+				output += String.format("%-10s %-20s %-10s %-20s %-20s\n", reg.getRegistrationNumber(), reg.getRegistrationTTId(), reg.getRegistrationStatus(), reg.getRegistrationDate(), reg.getRegistrationEmail());
+			}
+			return output;
+			
+		}
+		
+		public static void viewAllRegistration(ArrayList<Registration> registrationList) {
+			C206_CaseStudy.setHeader("REGISTRATION LIST");
+			String output = String.format("%-10s %-20s %-10s %-20s %-20s\n", "REG ID", "TIMETABLE ID", "STATUS", "REGISTRATION DATE", "STUDENT EMAIL");
+			output += viewAllRegister(registrationList);
+			System.out.println(output);
+		}
+		
+		//DELETE
+		public static void deleteRegistration(ArrayList<Registration> registrationList) {
+			C206_CaseStudy.viewAllRegistration(registrationList);
+			int id = Helper.readInt("Enter ID of Registration to delete > ");
+			Boolean isDeleted = doDeleteRegistration(registrationList, id);
 
-		return register;
-	}
+			if (isDeleted == false) {
+				System.out.println("Registration ID does not exist");
+			} else {
+				System.out.println("Registration ID " + id + " is deleted");
+			}
 
-	public static void addRegister(ArrayList<Registration> registrationList, Registration register) {
+		}
+		
+		public static boolean doDeleteRegistration(ArrayList<Registration> registrationList, int id) {
+			boolean isDeleted = false;
 
-		registrationList.add(register);
+			for (int i = 0; i < registrationList.size(); i++) {
+				if (id == (registrationList.get(i).getRegistrationNumber())) {
+					registrationList.remove(i);
 
-	}
-
-	public static void viewAllRegister(ArrayList<Registration> registrationList) {
-
-	}
-	// =================================NAEEM=================================//
+					isDeleted = true;
+				}
+			}
+			return isDeleted;
+		}
+		
+		
+		
+		//=================================NAEEM2E=================================//
 
 	// ================================= SAKTHI =================================//
 	public static subjectGroup registersubjectGroup(ArrayList<subjectGroup> subjectGroupList) {
