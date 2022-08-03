@@ -10,6 +10,9 @@ public class C206_CaseStudy {
 		ArrayList<TuitionInfo> tutionInfoList = new ArrayList<TuitionInfo>();
 		
 		
+		
+		int option =0;
+		
 		while (option != 5) {
 
 			adminMenu();
