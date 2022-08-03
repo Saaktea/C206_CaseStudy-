@@ -12,11 +12,14 @@ public class C206_CaseStudy {
 		ArrayList<TuitionInfo> tutionInfoList = new ArrayList<TuitionInfo>();
 		ArrayList<Timetable> ttList = new ArrayList<Timetable>();
 		ArrayList<Registration> registrationList = new ArrayList<Registration>();
-		DateTimeFormatter registrationDtf =  DateTimeFormatter.ofPattern("dd/MM/yyyy");
+		DateTimeFormatter registrationDtf = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 
 		ttList.add(new Timetable(1001, 80.0, "01/02/2020", "01/10/2020", "Face to Face"));
 		ttList.add(new Timetable(1002, 95.0, "01/03/2020", "01/09/2020", "Face to Face"));
-		registrationList.add(new Registration(4001, 001, "abc@gmail.com", LocalDate.parse("14/04/2002", registrationDtf)));
+		registrationList
+				.add(new Registration(4001, 001, "abc@gmail.com", LocalDate.parse("14/04/2002", registrationDtf)));
+		subjectGroupList.add(new subjectGroup("Math", "Math is fun", "Must pass sec1 math"));
+		subjectGroupList.add(new subjectGroup("Chemistry", "Chem is fun", "Must pass sec1 chem"));
 
 		int option = 0;
 
@@ -84,22 +87,22 @@ public class C206_CaseStudy {
 				}
 
 			} else if (option == 3) {
-				// Loan item
-				C206_CaseStudy.setHeader("LOAN");
-				// ResourceCentre.setHeader("ITEM TYPES");
-				System.out.println("1. Camcorder");
-				System.out.println("2. Chromebook");
+				// Maintan subject group details
+				C206_CaseStudy.setHeader("Maintan Subject Group Details");
+				subjectGroupMenu();
+				Helper.line(80, "-");
 
-				int itemType = Helper.readInt("Enter option to select item type > ");
+				int optionNum = Helper.readInt("Enter option to select > ");
 
-				if (itemType == 1) {
-					// Loan camcorder
-					// ResourceCentre.loanCamcorder(camcorderList);
-				} else if (itemType == 2) {
-					// Loan Chromebook
-					// ResourceCentre.loanChromebook(chromebookList);
+				if (optionNum == 1) {
+					subjectGroup sg = registersubjectGroup(subjectGroupList);
+					C206_CaseStudy.addsubjectGroup(subjectGroupList, sg);
+				} else if (optionNum == 2) {
+					C206_CaseStudy.viewAllSubjectGroup(subjectGroupList);
+				} else if (optionNum == 3) {
+					C206_CaseStudy.deleteTimetable(subjectGroupList);
 				} else {
-					System.out.println("Invalid type");
+					System.out.println("Invalid Option Number");
 				}
 
 			} else if (option == 4) {
@@ -108,14 +111,13 @@ public class C206_CaseStudy {
 				// ResourceCentre.setHeader("RETURN");
 				// ResourceCentre.setHeader("ITEM TYPES");
 
-
 				int itemType = Helper.readInt("Enter option for registration > ");
-				if (itemType == 1) {																			//NAEEM
+				if (itemType == 1) { // NAEEM
 					Registration register = registerStudent(registrationList);
 					C206_CaseStudy.addRegister(registrationList, register);
 					System.out.println("Chromebook added");
 				} else if (itemType == 2) {
-					
+
 				} else {
 					System.out.println("Invalid type");
 				}
@@ -139,21 +141,29 @@ public class C206_CaseStudy {
 		System.out.println("5. Quit");
 		Helper.line(80, "-");
 	}
-	
-	//Naeem
+
+	// Naeem
 	public static void registrationMenu() {
 		C206_CaseStudy.setHeader("TUITION MANAGEMENT SYSTEM");
 		System.out.println("1. Register student for tuition");
 		System.out.println("2. View all registration");
 		System.out.println("3. Delete registration");
 	}
-	
+
 	public static void tuitionMenu() {
 		System.out.println("1. Tuition Timetable");
 		System.out.println("2. Timetable");
 		Helper.line(80, "-");
-		
+
 	}
+
+	// ================================= SAKTHI =================================//
+	public static void subjectGroupMenu() {
+		System.out.println("1. Register Subject Group");
+		System.out.println("2. View all Subject Group");
+		System.out.println("3. Delete registration");
+	}
+	// ================================= SAKTHI =================================//
 
 	private static void setHeader(String header) {
 		Helper.line(80, "-");
@@ -179,6 +189,25 @@ public class C206_CaseStudy {
 		System.out.println(output);
 	}
 
+	// ================================= SAKTHI =================================//
+	public static String retriveAllSubjectGroup(ArrayList<subjectGroup> subjectGroupList) {
+		String output = "";
+
+		for (int i = 0; i < subjectGroupList.size(); i++) {
+			output += String.format("%-10s %-20s %-10s\n", subjectGroupList.get(i).getName(),
+					subjectGroupList.get(i).getDescription(), subjectGroupList.get(i).getPrerequisities());
+		}
+		return output;
+	}
+
+	public static void viewAllSubjectGroup(ArrayList<subjectGroup> subjectGroupList) {
+		C206_CaseStudy.setHeader("SUBJECT GROUP LIST");
+		String output = String.format("%-10s %-20s %-10s\n", "name", "description", "prerequisities");
+		output += retriveAllSubjectGroup(subjectGroupList);
+		System.out.println(output);
+	}
+	// ================================= SAKTHI =================================//
+
 	public static Timetable inputTimetable(ArrayList<Timetable> ttList) {
 		int newID = ttList.get(ttList.size() - 1).getID();
 
@@ -187,8 +216,8 @@ public class C206_CaseStudy {
 		String endDate = Helper.readString("Enter the ending date > ");
 		String modeType = Helper.readString("Enter the mode for the tuition > ");
 
-		Timetable tt = new Timetable((newID+1), pricing, startDate, endDate, modeType);
-		
+		Timetable tt = new Timetable((newID + 1), pricing, startDate, endDate, modeType);
+
 		return tt;
 	}
 
@@ -222,32 +251,74 @@ public class C206_CaseStudy {
 		}
 		return isDeleted;
 	}
-	//=================================NAEEM=================================//
+
+	// ================================= SAKTHI =================================//
+
+	public static void deleteStudentGroup(ArrayList<subjectGroup> subjectGroupList) {
+		C206_CaseStudy.viewAllSubjectGroup(subjectGroupList);
+		String search = Helper.readString("Enter Subject Name: ");
+		Boolean isDeleted = doDeleteSubjectGroup(subjectGroupList, search);
+
+		if (isDeleted == false) {
+			System.out.println("Invalid entry! Subject Group Name does not exist");
+		} else {
+			System.out.println("Subject Group Name " + search + " is deleted!");
+		}
+
+	}
+
+	public static boolean doDeleteSubjectGroup(ArrayList<subjectGroup> subjectGroupList, String search) {
+		boolean isDeleted = false;
+
+		for (int i = 0; i < subjectGroupList.size(); i++) {
+			if (search.equalsIgnoreCase(subjectGroupList.get(i).getName()))
+				subjectGroupList.remove(i);
+
+			isDeleted = true;
+
+		}
+		return isDeleted;
+	}
+
+	// =================================NAEEM=================================//
 	public static Registration registerStudent(ArrayList<Registration> registrationList) {
-		
-		int id = registrationList.get(registrationList.size()-1).getRegistrationNumber();
+
+		int id = registrationList.get(registrationList.size() - 1).getRegistrationNumber();
 		id += 1;
-		
-		
+
 		int timetableID = Helper.readInt("Enter tuition timetable ID: ");
 		String studentEmail = Helper.readString("Enter student email: ");
-		LocalDate registerDate = LocalDate.now();  
-		
+		LocalDate registerDate = LocalDate.now();
+
 		Registration register = new Registration(id, timetableID, studentEmail, registerDate);
-		
+
 		return register;
 	}
-	
+
 	public static void addRegister(ArrayList<Registration> registrationList, Registration register) {
 
-		registrationList.add(register);	
+		registrationList.add(register);
 
 	}
-	
-	
+
 	public static void viewAllRegister(ArrayList<Registration> registrationList) {
-		
-		
+
 	}
-	//=================================NAEEM=================================//
+	// =================================NAEEM=================================//
+
+	// ================================= SAKTHI =================================//
+	public static subjectGroup registersubjectGroup(ArrayList<subjectGroup> subjectGroupList) {
+		String groupName = Helper.readString("Enter the subject group name: ");
+		String discription = Helper.readString("Enter the discription for the subject group: ");
+		String prereq = Helper.readString("Enter the prerequisites for this subject group");
+
+		subjectGroup sg = new subjectGroup(groupName, discription, prereq);
+		return sg;
+	}
+
+	public static void addsubjectGroup(ArrayList<subjectGroup> subjectGroupList, subjectGroup sg) {
+		subjectGroupList.add(sg);
+	}
+	// ================================= SAKTHI =================================//
+
 }
