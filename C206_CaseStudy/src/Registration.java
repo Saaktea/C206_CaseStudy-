@@ -11,7 +11,7 @@ public class Registration {
 	private LocalDate registrationDate;
 	
 	
-	public Registration(int registrationNumber, int registrationTTId, String registrationEmail, String registrationStatus, LocalDate registrationDate) {
+	public Registration(int registrationNumber, int registrationTTId, String registrationEmail, LocalDate registrationDate) {
 		this.registrationNumber = registrationNumber;
 		this.registrationTTId = registrationTTId;
 		this.registrationEmail = registrationEmail;

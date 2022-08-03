@@ -1,3 +1,5 @@
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
 public class C206_CaseStudy {
@@ -9,9 +11,12 @@ public class C206_CaseStudy {
 		ArrayList<student> studentList = new ArrayList<student>();
 		ArrayList<TuitionInfo> tutionInfoList = new ArrayList<TuitionInfo>();
 		ArrayList<Timetable> ttList = new ArrayList<Timetable>();
+		ArrayList<Registration> registrationList = new ArrayList<Registration>();
+		DateTimeFormatter registrationDtf =  DateTimeFormatter.ofPattern("dd/MM/yyyy");
 
 		ttList.add(new Timetable(1001, 80.0, "01/02/2020", "01/10/2020", "Face to Face"));
 		ttList.add(new Timetable(1002, 95.0, "01/03/2020", "01/09/2020", "Face to Face"));
+		registrationList.add(new Registration(4001, 001, "abc@gmail.com", LocalDate.parse("14/04/2002", registrationDtf)));
 
 		int option = 0;
 
@@ -98,19 +103,19 @@ public class C206_CaseStudy {
 				}
 
 			} else if (option == 4) {
+				registrationMenu();
 				// Return item
 				// ResourceCentre.setHeader("RETURN");
 				// ResourceCentre.setHeader("ITEM TYPES");
-				System.out.println("1. Camcorder");
-				System.out.println("2. Chromebook");
 
-				int itemType = Helper.readInt("Enter option to select item type > ");
-				if (itemType == 1) {
-					// Return camcorder
-					// ResourceCentre.returnCamcorder(camcorderList);
+
+				int itemType = Helper.readInt("Enter option for registration > ");
+				if (itemType == 1) {																			//NAEEM
+					Registration register = registerStudent(registrationList);
+					C206_CaseStudy.addRegister(registrationList, register);
+					System.out.println("Chromebook added");
 				} else if (itemType == 2) {
-					// Return Chromebook
-					// ResourceCentre.returnChromebook(chromebookList);
+					
 				} else {
 					System.out.println("Invalid type");
 				}
@@ -133,6 +138,14 @@ public class C206_CaseStudy {
 		System.out.println("4. Maintain student");
 		System.out.println("5. Quit");
 		Helper.line(80, "-");
+	}
+	
+	//Naeem
+	public static void registrationMenu() {
+		C206_CaseStudy.setHeader("TUITION MANAGEMENT SYSTEM");
+		System.out.println("1. Register student for tuition");
+		System.out.println("2. View all registration");
+		System.out.println("3. Delete registration");
 	}
 	
 	public static void tuitionMenu() {
@@ -209,4 +222,32 @@ public class C206_CaseStudy {
 		}
 		return isDeleted;
 	}
+	//=================================NAEEM=================================//
+	public static Registration registerStudent(ArrayList<Registration> registrationList) {
+		
+		int id = registrationList.get(registrationList.size()-1).getRegistrationNumber();
+		id += 1;
+		
+		
+		int timetableID = Helper.readInt("Enter tuition timetable ID: ");
+		String studentEmail = Helper.readString("Enter student email: ");
+		LocalDate registerDate = LocalDate.now();  
+		
+		Registration register = new Registration(id, timetableID, studentEmail, registerDate);
+		
+		return register;
+	}
+	
+	public static void addRegister(ArrayList<Registration> registrationList, Registration register) {
+
+		registrationList.add(register);	
+
+	}
+	
+	
+	public static void viewAllRegister(ArrayList<Registration> registrationList) {
+		
+		
+	}
+	//=================================NAEEM=================================//
 }
