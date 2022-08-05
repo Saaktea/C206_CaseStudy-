@@ -158,6 +158,7 @@ public class C206_CaseStudy {
 		System.out.println("3. Delete registration");
 	}
 
+	//Raghu
 	public static void tuitionMenu() {
 		System.out.println("1. Tuition Timetable");
 		System.out.println("2. Timetable");
@@ -173,13 +174,15 @@ public class C206_CaseStudy {
 	}
 	// ================================= SAKTHI =================================//
 
+	// ================================= RAGHU =================================//
+
 	private static void setHeader(String header) {
 		Helper.line(80, "-");
 		System.out.println(header);
 		Helper.line(80, "-");
 	}
 
-	public static String retriveAllTimetable(ArrayList<Timetable> ttList) {
+	public static String retrieveAllTimetable(ArrayList<Timetable> ttList) {
 		String output = "";
 
 		for (int i = 0; i < ttList.size(); i++) {
@@ -193,9 +196,11 @@ public class C206_CaseStudy {
 		C206_CaseStudy.setHeader("TIMETABLE LIST");
 		String output = String.format("%-10s %-20s %-10s %-10s %-20s\n", "ID", "PRICE", "START TIME", "END TIME",
 				"MODE");
-		output += retriveAllTimetable(ttList);
+		output += retrieveAllTimetable(ttList);
 		System.out.println(output);
 	}
+	// ================================= RAGHU =================================//
+
 
 	// ================================= SAKTHI =================================//
 	public static String retriveAllSubjectGroup(ArrayList<subjectGroup> subjectGroupList) {
@@ -203,7 +208,7 @@ public class C206_CaseStudy {
 
 		for (int i = 0; i < subjectGroupList.size(); i++) {
 			output += String.format("%-10s %-20s %-10s\n", subjectGroupList.get(i).getName(),
-					subjectGroupList.get(i).getDescription(), subjectGroupList.get(i).getPrerequisities());
+					subjectGroupList.get(i).getDescription(), subjectGroupList.get(i).getPreRequisities());
 		}
 		return output;
 	}
@@ -216,6 +221,7 @@ public class C206_CaseStudy {
 	}
 	// ================================= SAKTHI =================================//
 
+	// ================================= RAGHU =================================//
 	public static Timetable inputTimetable(ArrayList<Timetable> ttList) {
 		int newID = ttList.get(ttList.size() - 1).getID();
 
@@ -259,6 +265,7 @@ public class C206_CaseStudy {
 		}
 		return isDeleted;
 	}
+	// ================================= RAGHU =================================//
 
 	// ================================= SAKTHI =================================//
 
