@@ -235,75 +235,75 @@ public class C206_CaseStudy {
 	
 	// ================================= Razi =================================//
 	
-//	public static String retrieveAllTuitionInfo(ArrayList<TuitionInfo> tuitionInfoList) {
-//		String output = "";
-//
-//		for (int i = 0; i < tuitionInfoList.size(); i++) {
-//			output += String.format("%-10d %-20s %-10s %-10s %-10s %-10s %-20s\n", tuitionInfoList.get(i).getCode(), tuitionInfoList.get(i).getTitle(),
-//					tuitionInfoList.get(i).getGroupName(), tuitionInfoList.get(i).getDescription(), 
-//					tuitionInfoList.get(i).getDuration(), tuitionInfoList.get(i).getPreRequisite(), tuitionInfoList.get(i).getTeacher() );
-//		}
-//		return output;
-//	}
-//	
-	
-//	private static void viewAllTuitionInfo(ArrayList<TuitionInfo>tuitionInfoList)
-//	{
-//		C206_CaseStudy.setHeader("TUITION INFORMATION LIST");
-//		Helper.line(80, "-");
-//		
-//		String output = String.format("%-10s %-20s %-10s %-10s %-10s %-10s %-10s\n", "TUITION CODE", "TITLE", 
-//				"TUITION GROUP NAME", "DESCRIPTION", "DURATION", "PRE-REQUISITE", "TEACHER");
-//		output += retrieveAllTuitionInfo(tuitionInfoList);
-//		System.out.println(output);
-//	}
-	
-//	public static TuitionInfo inputTuitionInfo(ArrayList<TuitionInfo> tuitionInfoList) {
-//		int newCode = tuitionInfoList.get(tuitionInfoList.size() - 1).getCode();
-//
-//		String title = Helper.readString("Enter Tuition Title > ");
-//		String groupName = Helper.readString("Enter Tuition Group Name > ");
-//		String description = Helper.readString("Enter Tuition Description > ");
-//		String duration = Helper.readString("Enter Tuition Duration > ");
-//		String preRequisite = Helper.readString("Enter Tuition Pre-Requisite > ");
-//		String teacher = Helper.readString("Enter Tuition Teacher > ");
-//
-//		TuitionInfo ti = new TuitionInfo((newCode + 1), title, groupName, description, 
-//				duration, preRequisite, teacher);
+	public static String retrieveAllTuitionInfo(ArrayList<TuitionInfo> tuitionInfoList) {
+		String output = "";
 
-//		return ti;
-//	}
-//
-//	public static void addTuitionInfo(ArrayList<TuitionInfo> tuitionInfoList, TuitionInfo ti) {
-//		tuitionInfoList.add(ti);
-//	}
-//
-//	public static void deleteTuitionInfo(ArrayList<TuitionInfo> tuitionInfoList) {
-//		C206_CaseStudy.viewAllTuitionInfo(tuitionInfoList);
-//		int codeNum = Helper.readInt("Enter code of tuition > ");
-//		Boolean isDeleted = doDeleteTuitionInfo(tuitionInfoList, codeNum);
-//
-//		if (isDeleted == false) {
-//			System.out.println("Invalid entry! Tuition code does not exist");
-//		} else {
-//			System.out.println("Tuition code " + codeNum + " is deleted!");
-//		}
-//
-//	}
-//
-//	public static boolean doDeleteTuitionInfo(ArrayList<TuitionInfo> tuitionInfoList, int codeNum) {
-//		boolean isDeleted = false;
-//
-//		for (int i = 0; i < tuitionInfoList.size(); i++) {
-//			if (codeNum == (tuitionInfoList.get(i).getCode())) {
-//				tuitionInfoList.remove(i);
-//
-//				isDeleted = true;
-//
-//			}
-//		}
-//		return isDeleted;
-//	}
+		for (int i = 0; i < tuitionInfoList.size(); i++) {
+			output += String.format("%-10d %-20s %-10s %-10s %-10s %-10s %-20s\n", tuitionInfoList.get(i).getCode(), tuitionInfoList.get(i).getTitle(),
+					tuitionInfoList.get(i).getGroupName(), tuitionInfoList.get(i).getDescription(), 
+					tuitionInfoList.get(i).getDuration(), tuitionInfoList.get(i).getPreRequisite(), tuitionInfoList.get(i).getTeacher() );
+		}
+		return output;
+	}
+	
+	
+	private static void viewAllTuitionInfo(ArrayList<TuitionInfo>tuitionInfoList)
+	{
+		C206_CaseStudy.setHeader("TUITION INFORMATION LIST");
+		Helper.line(80, "-");
+		
+		String output = String.format("%-10s %-20s %-10s %-10s %-10s %-10s %-10s\n", "TUITION CODE", "TITLE", 
+				"TUITION GROUP NAME", "DESCRIPTION", "DURATION", "PRE-REQUISITE", "TEACHER");
+		output += retrieveAllTuitionInfo(tuitionInfoList);
+		System.out.println(output);
+	}
+	
+	public static TuitionInfo inputTuitionInfo(ArrayList<TuitionInfo> tuitionInfoList) {
+		int newCode = tuitionInfoList.get(tuitionInfoList.size() - 1).getCode();
+
+		String title = Helper.readString("Enter Tuition Title > ");
+		String groupName = Helper.readString("Enter Tuition Group Name > ");
+		String description = Helper.readString("Enter Tuition Description > ");
+		String duration = Helper.readString("Enter Tuition Duration > ");
+		String preRequisite = Helper.readString("Enter Tuition Pre-Requisite > ");
+		String teacher = Helper.readString("Enter Tuition Teacher > ");
+
+		TuitionInfo ti = new TuitionInfo((newCode + 1), title, groupName, description, 
+				duration, preRequisite, teacher);
+
+		return ti;
+	}
+	
+	public static void addTuitionInfo(ArrayList<TuitionInfo> tuitionInfoList, TuitionInfo ti) {
+		tuitionInfoList.add(ti);
+	}
+
+	public static void deleteTuitionInfo(ArrayList<TuitionInfo> tuitionInfoList) {
+		C206_CaseStudy.viewAllTuitionInfo(tuitionInfoList);
+		int codeNum = Helper.readInt("Enter code of tuition > ");
+		Boolean isDeleted = doDeleteTuitionInfo(tuitionInfoList, codeNum);
+
+		if (isDeleted == false) {
+			System.out.println("Invalid entry! Tuition code does not exist");
+		} else {
+			System.out.println("Tuition code " + codeNum + " is deleted!");
+		}
+
+	}
+	
+	public static boolean doDeleteTuitionInfo(ArrayList<TuitionInfo> tuitionInfoList, int codeNum) {
+		boolean isDeleted = false;
+
+		for (int i = 0; i < tuitionInfoList.size(); i++) {
+			if (codeNum == (tuitionInfoList.get(i).getCode())) {
+				tuitionInfoList.remove(i);
+
+				isDeleted = true;
+
+			}
+	}
+		return isDeleted;
+	}
 	
 	// ================================= Razi =================================//
 
