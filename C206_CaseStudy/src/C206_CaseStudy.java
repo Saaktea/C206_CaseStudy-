@@ -22,13 +22,12 @@ public class C206_CaseStudy {
 		subjectGroupList.add(new subjectGroup("Chemistry", "Chem is fun", "Must pass sec1 chem"));
 		
 		//Razi
-//		tuitionInfoList .add(new TuitionInfo(1001, "Mathematics", "Math", "Mathematics is the science and study of quality, structure, space, and change.",
-//				"1 hour", "Must pass sec1 math", "Mr. Aaron"));
-//		tuitionInfoList.add(new TuitionInfo(1002, "Chemistry", "Chemistry",
-//				"The branch of science concerned with the substances of which matter is composed, the investigation of their properties and reactions, and the use of such reactions to form new substances.",
-//				"45 mins", "Must pass sec1 chem", "Ms. Siti"));
-//		
-//	
+		tuitionInfoList .add(new TuitionInfo(1001, "Mathematics", "Math", "Mathematics is the science and study of quality, structure, space, and change.",
+				"1 hour", "Must pass sec1 math", "Mr. Aaron"));
+		tuitionInfoList.add(new TuitionInfo(1002, "Chemistry", "Chemistry",
+				"The branch of science concerned with the substances of which matter is composed, the investigation of their properties and reactions, and the use of such reactions to form new substances.",
+				"45 mins", "Must pass sec1 chem", "Ms. Siti"));
+		
 
 		int option = 0;
 
