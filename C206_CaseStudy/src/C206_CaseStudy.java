@@ -94,11 +94,13 @@ public class C206_CaseStudy {
 					int optionNum = Helper.readInt("Enter option to select > ");
 
 					if (optionNum == 1) {
-
+						C206_CaseStudy.viewAllTuitionInfo(tuitionInfoList);
 					} else if (optionNum == 2) {
-
+						TuitionInfo ti = inputTuitionInfo(tuitionInfoList);
+						C206_CaseStudy.addTuitionInfo(tuitionInfoList, ti);
+						System.out.println("Tuition Information Added!");
 					} else if (optionNum == 3) {
-
+						C206_CaseStudy.deleteTuitionInfo(tuitionInfoList);
 					} else {
 						System.out.println("Invalid Option Number");
 					}
@@ -182,7 +184,7 @@ public class C206_CaseStudy {
 	//Raghu
 	public static void tuitionMenu() {
 		System.out.println("1. Tuition Timetable");
-		System.out.println("2. Timetable");
+		System.out.println("2. Tuition Information");
 		Helper.line(80, "-");
 
 	}
