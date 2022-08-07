@@ -2,6 +2,8 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
+//fully completed
+
 public class C206_CaseStudy {
 
 	public static void main(String[] args) {
@@ -16,11 +18,8 @@ public class C206_CaseStudy {
 
 		ttList.add(new Timetable(1001, 80.0, "01/02/2020", "01/10/2020", "Face to Face"));
 		ttList.add(new Timetable(1002, 95.0, "01/03/2020", "01/09/2020", "Face to Face"));
-		
 		registrationList.add(new Registration(4001, 001, "", "abc@gmail.com", "2002/04/14"));
-		registrationList.add(new Registration(4002, 001, "", "def@gmail.com", "2002/04/15"));
-		
-		
+		 registrationList.add(new Registration(4002, 001, "", "def@gmail.com", "2002/04/15"));
 		subjectGroupList.add(new subjectGroup("Math", "Math is fun", "Must pass sec1 math"));
 		subjectGroupList.add(new subjectGroup("Chemistry", "Chem is fun", "Must pass sec1 chem"));
 		
@@ -414,11 +413,11 @@ public class C206_CaseStudy {
 			
 			
 			int timetableID = Helper.readInt("Enter tuition timetable ID: ");
-			String studentEmail = Helper.readString("Enter student email: ");
-			LocalDate registerDate = LocalDate.now();  
-			String date = registerDate.toString();
-			
-			Registration register = new Registration(id, timetableID, "", studentEmail, date);
+			   String studentEmail = Helper.readString("Enter student email: ");
+			   LocalDate registerDate = LocalDate.now();  
+			   String date = registerDate.toString();
+			   
+			   Registration register = new Registration(id, timetableID, "", studentEmail, date);
 			
 			return register;
 		}
@@ -434,7 +433,7 @@ public class C206_CaseStudy {
 			String output = "";
 
 			for (Registration reg : registrationList) {
-				output += String.format("%-10s %-20s %-10s %-20s %-20s\n", reg.getRegistrationNumber(), reg.getRegistrationTTId(), reg.getRegistrationStatus(), reg.getRegistrationEmail(), reg.getRegistrationDate());
+				output += String.format("%-10s %-20s %-10s %-20s %-20s\n", reg.getRegistrationNumber(), reg.getRegistrationTTId(), reg.getRegistrationStatus(), reg.getRegistrationDate(), reg.getRegistrationEmail());
 			}
 			return output;
 			
@@ -564,3 +563,5 @@ public class C206_CaseStudy {
 			return isDeleted;
 		}
 }
+
+
